@@ -1,7 +1,7 @@
 const fetch = require('node-fetch')
 const { token, user } = require('./.SECRET')
 
-fetch(`https://api.github.com/users/ryanpcmcquen/repos`)
+fetch(`https://api.github.com/users/${user}/repos`)
     .then((response) => response.json())
     .then((json) => {
         console.log(json)
