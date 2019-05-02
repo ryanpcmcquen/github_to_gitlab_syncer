@@ -1,2 +1,2 @@
-# github_to_gitlab_mirroring
-Mirror all your GitHubs on GitLab.
+# github_to_gitlab_syncer
+Sync all your GitHubs to GitLab.
