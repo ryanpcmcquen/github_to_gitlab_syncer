@@ -19,3 +19,21 @@ node DELETE_ALL_GITLAB_REPOS.js
 ```
 
 **WARNING**, this will delete everything there, so please, USE IT AT YOUR OWN RISK!
+
+Oh, and if you plan to have GitHub be your 'source of truth', you should also run this:
+
+```
+node FIX_MIRROR_SETTTINGS_FOR_ALL_GITLABS.js
+```
+
+This will change the `mirror_overwrites_diverged_branches` setting to `true` for all your GitLab repos, meaning if things get borked, they get overwritten from GitHub.
+
+And that `.SECRETS` thing should look kinda like this:
+
+```js
+module.exports = {
+    gitHubToken: 'LONG_ASS_TOKEN',
+    gitLabToken: 'NOT_AS_LONG_OF_A_TOKEN',
+    user: 'YOUR_NAME_BRO'
+}
+```
