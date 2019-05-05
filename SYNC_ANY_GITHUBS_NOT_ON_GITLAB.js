@@ -1,6 +1,11 @@
 const fetch = require('node-fetch')
 const FormData = require('form-data')
-const { gitHubToken, gitLabToken, user } = require('./.SECRETS')
+const {
+    gitHubToken,
+    gitLabToken,
+    gitHubUser,
+    gitLabUser
+} = require('./.SECRETS')
 const gitHubApi = 'https://api.github.com'
 const gitLabApi = 'https://gitlab.com/api/v4'
 
@@ -38,7 +43,8 @@ const getRepos = (obj) => {
 
 // GitHub:
 getRepos({
-    url: (count) => `${gitHubApi}/users/${user}/repos?type=all&page=${count}`,
+    url: (count) =>
+        `${gitHubApi}/users/${gitHubUser}/repos?type=all&page=${count}`,
     options: {
         headers: {
             Authorization: `token ${gitHubToken}`
@@ -48,7 +54,8 @@ getRepos({
     .then((gitHubRepos) => {
         // GitLab:
         getRepos({
-            url: (count) => `${gitLabApi}/users/${user}/projects?page=${count}`
+            url: (count) =>
+                `${gitLabApi}/users/${gitLabUser}/projects?page=${count}`
         })
             .then((gitLabRepos) => {
                 // console.log('GitHub: ', gitHubRepos)

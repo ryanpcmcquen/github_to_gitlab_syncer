@@ -12,14 +12,14 @@ The first script you should start with, is [`SYNC_ANY_GITHUBS_NOT_ON_GITLAB.js`]
 node SYNC_ANY_GITHUBS_NOT_ON_GITLAB.js
 ```
 
-The script will compare what you have on GitHub and GitLab, and sync anything not on GitLab over to GitHub. It even does some name sanitation, as GitLab's GUI import process will occasionally take some liberties with naming.
+The script will compare what you have on GitHub and GitLab, and sync anything not on GitLab _from_ GitHub. It even does some name sanitation, as GitLab's GUI import process will occasionally take some liberties with naming.
 
 ---
 
 Oh, and if you plan to have GitHub be your 'source of truth', you should also run this:
 
 ```
-node FIX_MIRROR_SETTTINGS_FOR_ALL_GITLABS.js
+node FIX_MIRROR_SETTINGS_FOR_ALL_GITLABS.js
 ```
 
 This will change the `mirror_overwrites_diverged_branches` setting to `true` for all your GitLab repos, meaning if things get borked, they get overwritten from GitHub.
@@ -30,7 +30,8 @@ And that `.SECRETS` thing should look kinda like this:
 module.exports = {
     gitHubToken: 'LONG_ASS_TOKEN',
     gitLabToken: 'NOT_AS_LONG_OF_A_TOKEN',
-    user: 'YOUR_NAME_BRO'
+    gitHubUser: 'YOUR_NAME_BRO',
+    gitLabUser: 'YOUR_NAME_BRA'
 }
 ```
 
@@ -45,3 +46,5 @@ node DELETE_ALL_GITLAB_REPOS.js
 ```
 
 **WARNING**, this will delete everything there, so please, USE IT AT YOUR OWN RISK!
+
+Well, actually it will delete a page worth of repos at a time, which means about 30 at a time. So you'll have to run it multiple times to delete everything. This is by design in case you run it on accident. The other scripts recurse to cover all of your repos/projects.

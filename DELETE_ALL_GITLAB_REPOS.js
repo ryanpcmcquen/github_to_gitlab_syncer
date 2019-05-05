@@ -1,8 +1,8 @@
 const fetch = require('node-fetch')
-const { gitLabToken, user } = require('./.SECRETS')
+const { gitLabToken, gitLabUser } = require('./.SECRETS')
 const gitLabApi = 'https://gitlab.com/api/v4'
 
-fetch(`${gitLabApi}/users/${user}/projects?private_token=${gitLabToken}`)
+fetch(`${gitLabApi}/users/${gitLabUser}/projects?private_token=${gitLabToken}`)
     .then((res) => res.json())
     .then((json) => {
         console.log(json)
