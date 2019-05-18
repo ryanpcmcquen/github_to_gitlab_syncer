@@ -36,7 +36,9 @@ const getGists = async (username, count) => {
         .then((res) => res.json())
         .then(async (json) => {
             if (json.length) {
-                allOfEm.push(json)
+                allOfEm.push(
+                    json.filter(repo => repo.public)
+                )
                 await getGists(username, ++count)
             } else {
                 return allOfEm

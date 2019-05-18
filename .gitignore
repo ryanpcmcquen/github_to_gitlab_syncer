@@ -1,3 +1,4 @@
 node_modules/
-.SECRETs
+.SECRETS
 gists/
+package-lock.json
