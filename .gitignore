@@ -2,3 +2,4 @@ node_modules/
 .SECRETS
 gists/
 package-lock.json
+yarn.lock
