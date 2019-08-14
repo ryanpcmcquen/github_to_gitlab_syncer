@@ -27,8 +27,7 @@ const go = async () => {
     const allTogetherNow = flatten(allOfEm)
     console.log(`Updating settings for ${allTogetherNow.length} repos ...`)
     allTogetherNow
-        .map((project) => project.id)
-        .forEach((projectId) => {
+        .forEach((project) => {
             const formData = new FormData()
             formData.append('mirror_overwrites_diverged_branches', 'true')
             // I don't really care about this setting, but
@@ -36,7 +35,7 @@ const go = async () => {
             // only change the mirror setting.
             formData.append('snippets_enabled', 'true')
             fetch(
-                `${gitLabApi}/projects/${projectId}?private_token=${gitLabToken}`,
+                `${gitLabApi}/projects/${project.id}?private_token=${gitLabToken}`,
                 {
                     method: 'PUT',
                     body: formData
