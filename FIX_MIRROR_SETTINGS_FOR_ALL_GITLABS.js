@@ -22,6 +22,8 @@ const getSet = async (count) => {
         .catch((err) => console.error(err));
 };
 
+const gitProtocolPrefixRegex = /^git:\/\//;
+
 const go = async () => {
     await getSet(0);
     const allTogetherNow = flatten(allOfEm);
@@ -33,13 +35,16 @@ const go = async () => {
         // GitLab has a bug that will not let you
         // only change the mirror setting.
         formData.append("snippets_enabled", "true");
-        if (project.import_url) {
+        if (
+            project.import_url &&
+            gitProtocolPrefixRegex.test(project.import_url)
+        ) {
             formData.append(
                 "import_url",
                 // GitHub deprecated the git:// protocol, so we want to update
                 // anything still using it to https://.
                 // https://github.blog/2021-09-01-improving-git-protocol-security-github/
-                project.import_url.replace(/^git:\/\//, "https://")
+                project.import_url.replace(gitProtocolPrefixRegex, "https://")
             );
         }
         fetch(

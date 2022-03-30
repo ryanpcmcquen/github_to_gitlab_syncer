@@ -1,5 +1,5 @@
 #!/bin/sh
-git pull
+git pull --all
 node GET_DEM_GISTS.js
 (
     cd gists/ryanpcmcquen
