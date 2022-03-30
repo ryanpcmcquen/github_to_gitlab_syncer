@@ -103,7 +103,7 @@ getRepos({
                         body: formData,
                     })
                         .then((res) => res.json())
-                        .then((json) => console.log(json))
+                        .then((json) => json)
                         .catch((err) => console.error(err));
                 });
             })

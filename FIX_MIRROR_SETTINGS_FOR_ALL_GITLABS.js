@@ -27,6 +27,7 @@ const go = async () => {
     const allTogetherNow = flatten(allOfEm);
     console.log(`Updating settings for ${allTogetherNow.length} repos ...`);
     allTogetherNow.forEach((project) => {
+        console.log("project: ", project.import_url);
         const formData = new FormData();
         formData.append("mirror_overwrites_diverged_branches", "true");
         // I don't really care about this setting, but
@@ -41,7 +42,7 @@ const go = async () => {
             }
         )
             .then((res) => res.json())
-            .then((json) => console.log(json))
+            .then((json) => json)
             .catch((err) => console.error(err));
     });
 };
