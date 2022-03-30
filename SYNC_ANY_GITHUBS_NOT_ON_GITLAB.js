@@ -22,10 +22,9 @@ const getRepos = (obj) => {
                     if (set.length) {
                         console.log(`Page ${count} complete.`)
                         set.forEach((repo) => {
-                            console.log(repo)
                             repos[sanitizeName(repo.name)] = {
                                 default_branch: repo.default_branch,
-                                git_url: repo.git_url || null,
+                                clone_url: repo.clone_url || null,
                                 name: repo.name,
                                 visibility: repo.private ? 'private' : 'public'
                             }
@@ -81,7 +80,7 @@ getRepos({
                     )
                     formData.append(
                         'import_url',
-                        `${gitHubRepos[repo].git_url}`
+                        `${gitHubRepos[repo].clone_url}`
                     )
                     formData.append('mirror', 'true')
                     formData.append('mirror_trigger_builds', 'true')
