@@ -28,11 +28,11 @@ And that `.SECRETS` thing should look kinda like this:
 
 ```js
 module.exports = {
-    gitHubToken: 'LONG_ASS_TOKEN',
-    gitLabToken: 'NOT_AS_LONG_OF_A_TOKEN',
-    gitHubUser: 'YOUR_NAME_BRO',
-    gitLabUser: 'YOUR_NAME_BRA'
-}
+    gitHubToken: "LONG_ASS_TOKEN",
+    gitLabToken: "NOT_AS_LONG_OF_A_TOKEN",
+    gitHubUser: "YOUR_NAME_BRO",
+    gitLabUser: "YOUR_NAME_BRA",
+};
 ```
 
 ---
