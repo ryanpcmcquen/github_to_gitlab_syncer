@@ -2,6 +2,8 @@
 
 Sync all your GitHubs to GitLab.
 
+### This now requires a premium plan.
+
 Hey there!
 
 Maybe you are like me, and are weary of where GitHub is headed, but cannot completely divest, since having a GitHub account has many perks (it is nearly essential for logging in to/using some really nifty dev tools). It is also a great place for people to discover your work. BUT, since GitLab has some incredible mirroring options, you may as well stick all your work over there, and give anyone else weary of GitHub a 'second option' for enjoying your work. This set of simple scripts will allow you to do just that.
