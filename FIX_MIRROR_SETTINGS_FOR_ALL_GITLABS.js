@@ -30,6 +30,8 @@ const go = async () => {
     console.log(`Updating settings for ${allTogetherNow.length} repos ...`);
     allTogetherNow.forEach((project) => {
         const formData = new FormData();
+        // This setting now requires a premium plan on GitLab, as of late 2022.
+        formData.append("mirror", "true");
         formData.append("mirror_overwrites_diverged_branches", "true");
         // I don't really care about this setting, but
         // GitLab has a bug that will not let you
@@ -47,6 +49,7 @@ const go = async () => {
                 project.import_url.replace(gitProtocolPrefixRegex, "https://")
             );
         }
+
         fetch(
             `${gitLabApi}/projects/${project.id}?private_token=${gitLabToken}`,
             {
@@ -55,7 +58,9 @@ const go = async () => {
             }
         )
             .then((res) => res.json())
-            .then((json) => json)
+            .then((json) => {
+                return json;
+            })
             .catch((err) => console.error(err));
     });
 };
